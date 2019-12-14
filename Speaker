@@ -1,5 +1,7 @@
 // TODO Auto-generated method stub
 Word = []
+import ButtonsInitializer as BI
+import Interpreter
 String newWord = ""
 String otherWord = ""
 while true:
