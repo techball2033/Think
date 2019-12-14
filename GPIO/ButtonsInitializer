@@ -1,0 +1,28 @@
+import RPi.GPIO as GPIO
+numT = 0
+numI = 0
+numM = 0
+numSM = 0
+numSR = 0
+numP = 0
+numSP = 0
+numS = 0
+inputs = [numT, numI, numM, numSM, numR, numSR, numP, numSP, numS]
+class values:
+  def _init_(self, value):
+      self.value = value
+      value = GPIO.input(5)
+def setup():
+    for i in range(7):
+      GPIO.setup(inputs[i], GPIO.IN, pull_up_down = GPIO_PUD_DOWN)
+    list = [values(thumb), values(index), values(middle), values(side_middle), values(ring), 
+    values(side_ring), values(pinky), values(side_pinky), values(space)]
+    for i in range(8):
+      list[i] = GPIO.input(inputs[i])
+########MAIN########
+setup()
+
+
+
+
+  
