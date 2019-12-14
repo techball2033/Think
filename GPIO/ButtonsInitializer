@@ -19,8 +19,6 @@ def setup():
     values(side_ring), values(pinky), values(side_pinky), values(space)]
     for i in range(8):
       list[i] = GPIO.input(inputs[i])
-########MAIN########
-setup()
 
 
 
