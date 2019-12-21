@@ -7,12 +7,12 @@ String newWord = ""
 String otherWord = ""
 while true:
 	code_to_test = """
-Interpreter.getLetter()
+word = Interpreter.getLetter()
 """
 	elapsed_time = timeit.timeit(code_to_test, number = 1)
 	if(elapsed_time > 2):
 		newWord += " "
-	newWord += otherWord
+	newWord += word
 	print(newWord)
 	
 	
