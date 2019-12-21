@@ -1,4 +1,5 @@
 from ButtonsInitializer import *
+import RPi.GPIO as GPIO
 letter = ""
 def getLetter():
   letDeterminer()
