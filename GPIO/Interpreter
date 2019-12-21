@@ -1,1 +1,7 @@
 from ButtonsInitializer import *
+letter = ""
+def getLetter():
+  letDeterminer()
+  return letter
+def letDeterminer():
+  
