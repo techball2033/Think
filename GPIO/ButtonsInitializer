@@ -1,25 +1,39 @@
 import RPi.GPIO as GPIO
-numT = 0
-numI = 0
-numM = 0
-numSM = 0
-numSR = 0
-numP = 0
-numSP = 0
-numS = 0
-inputs = [numT, numI, numM, numSM, numR, numSR, numP, numSP, numS]
+LnumI = 0     #Left index
+LnumM = 0     #Left middle
+LnumSM = 0    #Left side middle
+LnumR = 0     #Left ring
+LnumSR = 0    #Left side ring
+LnumP = 0     #Left pinky
+LnumSP = 0    #Left side pinky
+RnumI = 0     #Right index
+RnumM = 0     #Right middle
+RnumSM = 0    #RIght side middle
+RnumSR = 0    #Right side ring
+RnumP = 0     #Right pinky
+RnumSP = 0    #Right side pinky
+inputs = [RnumI, RnumM, RnumSM, RnumR, RnumSR, RnumP, RnumSP, LnumI, LnumM, LnumSM, LnumR, LnumSR, LnumP, LnumSP]
 class values:
-  def _init_(self, value):
-      self.value = value
-      value = GPIO.input(5)
+  def _init_(self, num):
+     self = GPIO.input(inputs[num])
+      
 def setup():
-    for i in range(7):
+    for i in range(len(inputs)):
       GPIO.setup(inputs[i], GPIO.IN, pull_up_down = GPIO_PUD_DOWN)
-    list = [values(thumb), values(index), values(middle), values(side_middle), values(ring), 
-    values(side_ring), values(pinky), values(side_pinky), values(space)]
-    for i in range(8):
-      list[i] = GPIO.input(inputs[i])
-
+    Rindex = values(RnumI)
+    Rmiddle = values(RnumM)
+    Rside_middle = values(RnumSM)
+    Rring = values(RnumR)
+    Rside_ring = values(RnumSR)
+    Rpinky = values(RnumP)
+    Rside_pinky = values(RnumSP)
+    Lindex = values(LnumI)
+    Lmiddle = values(LnumM)
+    Lside_middle = values(LnumSM)
+    Lring = values(LnumR)
+    Lside_ring = values(LnumSR)
+    Lpinky = values(LnumP)
+    Lside_pinky = values(LnumSP)
 
 
 
