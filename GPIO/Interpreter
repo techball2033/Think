@@ -1,8 +1,91 @@
-from ButtonsInitializer import *
+import ButtonsInitializer as BI
+import WordBank as WB
+from sys import argv
 import RPi.GPIO as GPIO
 letter = ""
-def getLetter():
-  letDeterminer()
+isButton = False
+didStart = False
+def getLetter():        //
+  letDeterminer()       //Determines whether a letter is present
   return letter
 def letDeterminer():
   
+def letCreator():
+  isWord = True
+  newWord = input("Type the new word: ")
+  type = input("What type is it? ")
+  type.lower()
+  if(type.find("t") = 0):
+    WB.timelist.append(newWord)
+  elif(type.find("n") = 0):
+    WB.nounlist.append(newWord)
+  elif(type.find("a") = 0):
+    WB.adjlist.append(newWord)
+  elif(type.find("v") = 0):
+    WB.adjlist.append(newWord)
+  elif(type.find("s") = 0):
+    WB.sublist.append(newWord)
+  else:
+    print("Sorry. Didn't get that.")
+    isWord = False
+  if(isWord = True):
+    button = input("WHich buttons are used?")
+    button.lower()
+    if(button.find("index") >= 0):
+      didStart = True
+      f = open('WordBank.py', 'a')
+      f.write("\nif((BI.Rindex || BI.Lindex)")
+      isButton = True
+    if(button.find("middle") >= 0):
+      if(didStart):
+        f.write(" && (BI.Lmiddle || BI.Rmiddle)")
+      else:
+        f = open('WordBank.py', 'a')
+        f.write("\nif((BI.Rindex || BI.Lindex)")
+        didStart = True
+    if(button.find("side middle") >= 0 || button.find("side_middle") >= 0):     
+        if(didStart):
+          f.write(" && (BI.Rside_middle || BI.Lside_middle)")
+        else:
+          didStart = True
+            f = open("WordBank.py", "a")		
+            f.write("if((BI.Rside_middle || BI.Lside_middle)")
+            isButton = True
+     if(button.find("side middle") >= 0 || button.find("side_middle") >= 0):
+        if(didStart):
+          f.write(" && (BI.Rring || BI.Lring)")
+        else:
+          didStart = True
+            f = open("WordBank.py", "a")		
+            f.write("if((BI.Rring || BI.Lring)")
+            isButton = True
+      if(button.find("side ring") >= 0 || button.find("side_ring") >= 0):
+        if(didStart):
+          f.write(" && (BI.Rside_ring || BI.Lside_ring)")
+        else:
+          didStart = True
+            f = open("WordBank.py", "a")		
+            f.write("if((BI.Rside_ring || BI.Lside_ring)")
+            isButton = True
+      if(button.find("pinky") >= 0):
+        if(didStart):
+          f.write(" && (BI.Rpinky || BI.Lpinky)")
+        else:
+          didStart = True
+            f = open("WordBank.py", "a")		
+            f.write("if((BI.Rpinky || BI.Lpinky)")
+            isButton = True
+     if(button.find("side pinky") >= 0 || button.find("side_pinky") >= 0):
+        if(didStart):
+          f.write(" && (BI.Rside_pinky || BI.Lside_pinky)")
+        else:
+          didStart = True
+            f = open("WordBank.py", "a")		
+            f.write("if((BI.Rside_pinky || BI.Lside_pinky)")
+            isButton = True
+     if(didStart):
+        f.write(")")
+        f.close()
+     else:
+        print("You didn't input any buttons.")
+        
