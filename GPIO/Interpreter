@@ -11,81 +11,82 @@ def getLetter():        //
 def letDeterminer():
   
 def letCreator():
+  didStart = False
   isWord = True
-  newWord = input("Type the new word: ")
-  type = input("What type is it? ")
-  type.lower()
-  if(type.find("t") = 0):
+  newWord = str(input("Type the new word: "))
+  typevar = input("What type is it? ")
+  typevar.lower()
+  if(typevar.find("t") == 0):
     WB.timelist.append(newWord)
-  elif(type.find("n") = 0):
+  elif(typevar.find("n") == 0):
     WB.nounlist.append(newWord)
-  elif(type.find("a") = 0):
+  elif(typevar.find("a") == 0):
     WB.adjlist.append(newWord)
-  elif(type.find("v") = 0):
+  elif(typevar.find("v") == 0):
     WB.adjlist.append(newWord)
-  elif(type.find("s") = 0):
+  elif(typevar.find("s") == 0):
     WB.sublist.append(newWord)
   else:
     print("Sorry. Didn't get that.")
     isWord = False
-  if(isWord = True):
+  if(isWord == True):
     button = input("WHich buttons are used?")
     button.lower()
     if(button.find("index") >= 0):
       didStart = True
       f = open('WordBank.py', 'a')
-      f.write("\nif((BI.Rindex || BI.Lindex)")
+      f.write("\nif((BI.Rindex or BI.Lindex)")
       isButton = True
     if(button.find("middle") >= 0):
       if(didStart):
-        f.write(" && (BI.Lmiddle || BI.Rmiddle)")
+        f.write(" && (BI.Lmiddle or BI.Rmiddle)")
       else:
         f = open('WordBank.py', 'a')
-        f.write("\nif((BI.Rindex || BI.Lindex)")
+        f.write("\nif((BI.Rindex or BI.Lindex)")
         didStart = True
-    if(button.find("side middle") >= 0 || button.find("side_middle") >= 0):     
+    if(button.find("side middle") >= 0 or button.find("side_middle") >= 0):     
         if(didStart):
-          f.write(" && (BI.Rside_middle || BI.Lside_middle)")
+          f.write(" && (BI.Rside_middle or BI.Lside_middle)")
         else:
           didStart = True
-            f = open("WordBank.py", "a")		
-            f.write("if((BI.Rside_middle || BI.Lside_middle)")
-            isButton = True
-     if(button.find("side middle") >= 0 || button.find("side_middle") >= 0):
+          f = open("WordBank.py", "a")		
+          f.write("if((BI.Rside_middle or BI.Lside_middle)")
+          isButton = True
+    if(button.find("side middle") >= 0 or button.find("side_middle") >= 0):
         if(didStart):
-          f.write(" && (BI.Rring || BI.Lring)")
+          f.write(" && (BI.Rring or BI.Lring)")
         else:
           didStart = True
-            f = open("WordBank.py", "a")		
-            f.write("if((BI.Rring || BI.Lring)")
-            isButton = True
-      if(button.find("side ring") >= 0 || button.find("side_ring") >= 0):
+          f = open("WordBank.py", "a")		
+          f.write("if((BI.Rring or BI.Lring)")
+          isButton = True
+    if(button.find("side ring") >= 0 or button.find("side_ring") >= 0):
         if(didStart):
-          f.write(" && (BI.Rside_ring || BI.Lside_ring)")
+          f.write(" && (BI.Rside_ring or BI.Lside_ring)")
         else:
           didStart = True
-            f = open("WordBank.py", "a")		
-            f.write("if((BI.Rside_ring || BI.Lside_ring)")
-            isButton = True
-      if(button.find("pinky") >= 0):
+          f = open("WordBank.py", "a")		
+          f.write("if((BI.Rside_ring or BI.Lside_ring)")
+          isButton = True
+    if(button.find("pinky") >= 0):
         if(didStart):
-          f.write(" && (BI.Rpinky || BI.Lpinky)")
+          f.write(" && (BI.Rpinky or BI.Lpinky)")
         else:
           didStart = True
-            f = open("WordBank.py", "a")		
-            f.write("if((BI.Rpinky || BI.Lpinky)")
-            isButton = True
-     if(button.find("side pinky") >= 0 || button.find("side_pinky") >= 0):
+          f = open("WordBank.py", "a")		
+          f.write("if((BI.Rpinky or BI.Lpinky)")
+          isButton = True
+    if(button.find("side pinky") >= 0 or button.find("side_pinky") >= 0):
         if(didStart):
-          f.write(" && (BI.Rside_pinky || BI.Lside_pinky)")
+          f.write(" && (BI.Rside_pinky or BI.Lside_pinky)")
         else:
           didStart = True
-            f = open("WordBank.py", "a")		
-            f.write("if((BI.Rside_pinky || BI.Lside_pinky)")
-            isButton = True
-     if(didStart):
-        f.write(")")
-        f.close()
-     else:
-        print("You didn't input any buttons.")
+          f = open("WordBank.py", "a")		
+          f.write("if((BI.Rside_pinky or BI.Lside_pinky)")
+          isButton = True
+    if(didStart):
+      f.write(")")
+      f.close()
+    else:
+      print("You didn't input any buttons.")
         
