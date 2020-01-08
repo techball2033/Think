@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+from gpiozero import MotionSensor
 LnumI = 0     #Left index
 LnumM = 0     #Left middle
 LnumSM = 0    #Left side middle
@@ -12,6 +13,7 @@ RnumSM = 0    #RIght side middle
 RnumSR = 0    #Right side ring
 RnumP = 0     #Right pinky
 RnumSP = 0    #Right side pinky
+sNum = 0      #Motion Sensor 
 inputs = [RnumI, RnumM, RnumSM, RnumR, RnumSR, RnumP, RnumSP, LnumI, LnumM, LnumSM, LnumR, LnumSR, LnumP, LnumSP]
 class values:
   def _init_(self, num):
@@ -34,7 +36,8 @@ def setup():
     Lside_ring = values(LnumSR)
     Lpinky = values(LnumP)
     Lside_pinky = values(LnumSP)
-
+    pir = MotionSensor(sNum)
+    pir.sample_rate(5)
 
 
   
