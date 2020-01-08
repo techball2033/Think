@@ -96,7 +96,7 @@ def letCreator():
     else:
       if(str(input("Is this necessary?")).lower().find('y')):
         if(didStart):
-          f.write("&& (BI.pir.motion_detected == False)")
+          f.write("and (BI.pir.motion_detected == False)")
       else:
         didStart = True
         f = open("WordBank.py", "a")
