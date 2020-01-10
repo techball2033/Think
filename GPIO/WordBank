@@ -19,7 +19,7 @@ def add(word, lis, num):
     file.writelines( data )
 
 
-def letCreator():
+def letCreator(): 
  didStart = False
  isWord = True
  newWord = str(input("Type the new word: "))
