@@ -1,4 +1,6 @@
 import sys
+button = ""
+didStart = False
 adjlist = []
 timelist = []
 nounlist = []
@@ -17,7 +19,23 @@ def add(word, lis, num):
   data[num] += "]\n"
   with open(sys.argv[0], 'w') as file:
     file.writelines( data )
-
+def HandSpecific(fing):
+  if(button.lower().find('L') == -1 and button.lower().find('R')):
+    if(button.find(fing) > button.find('L')):
+      if(didStart):
+        f.write(" and (BI.L" + fing + ")")
+       else:
+         f = open(sys.argv[0], 'a')
+         f.write("\nif(BI.L" + fing + " ")
+         didStart = True
+    elif(button.find(fing) > button.find('R')):
+      if(didStart):
+        f.write(" and (BI.R" + fing + ")")
+       else:
+         f = open(sys.argv[0], 'a')
+         f.write("\nif(BI.R" + fing + " ")
+         didStart = True
+        
 
 def letCreator(): 
  didStart = False
@@ -43,14 +61,15 @@ def letCreator():
    button.lower()
    if(button.find("index") >= 0):
      didStart = True
-     f = open(sys.argv[0], 'a')
-     f.write("\nif((BI.Rindex or BI.Lindex)")
-     isButton = True
+     if(not HandSpecific(index)):
+       f = open(sys.argv[0], 'a')
+       f.write("\nif((BI.Rindex or BI.Lindex)")
+       isButton = True
    if(button.find("middle") >= 0 and (button.find("side middle") == -1 or button.find("middle") < button.find("side middle"))):
      if(didStart):
        f.write(" and (BI.Lmiddle or BI.Rmiddle)")
      else:
-       f = open('WordBank.py', 'a')
+       f = open(sys.argv[0], 'a')
        f.write("\nif((BI.Rmiddle or BI.Lmiddle)")
        didStart = True
    if(button.find("side middle") >= 0 or button.find("side_middle") >= 0):    
