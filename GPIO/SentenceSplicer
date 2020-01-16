@@ -1,0 +1,15 @@
+def subString(Str): 
+    lis = []
+    num = len(Str)
+    for i in range(num - 1, 0, -1):
+      print('i = '+str(i))
+      if(Str[i] == " "):
+        lis.append(Str[i + 1: num])
+        num = i
+        for n in range(i, num):
+          Str.replace(Str[n: num], "z")
+        print(num)
+        num = i
+        print(lis)
+    lis.append(Str[0: num])
+    print(lis)
