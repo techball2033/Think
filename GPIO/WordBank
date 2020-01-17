@@ -44,7 +44,8 @@ def letCreator():
    if(button.find("index") >= 0):
      didStart = True
      f = open(sys.argv[0], 'a')
-     f.write("\nif((BI.Rindex or BI.Lindex)")
+     if(button.find("lindex") == -1 or button.find("lindex") < button.find("index")):
+       f.write("\nif((BI.Rindex or BI.Lindex)")
      isButton = True
    if(button.find("middle") >= 0 and (button.find("side middle") == -1 or button.find("middle") < button.find("side middle"))):
      if(didStart):
