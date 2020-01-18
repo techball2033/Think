@@ -24,7 +24,7 @@ def add(word, lis, num):
     file.writelines( data )
 def HandSpecific(fing, button, didStart):
   if(button.lower().find("l") != -1 or button.lower().find("r") != -1):
-    if("l" + fing == button.lower()):
+    if(button.find("l" + fing) != -1):
       print("Yes!!")
       if(didStart):
         f.write(" and (BI.L" + fing + ")")
@@ -32,7 +32,7 @@ def HandSpecific(fing, button, didStart):
         f = open(sys.argv[0], 'a')
         f.write("\nif(BI.L" + fing + " ")
         didStart = True
-    elif("r" + fing == button.lower()):
+    elif(button.find("l" + fing) != -1):
       if(didStart):
         f.write(" and (BI.R" + fing + ")")
       else:
