@@ -1,11 +1,12 @@
 import sys
 adjlist = []
-timelist = ['cool' ,'cool' ,'cool' ,'cool' ,]
+timelist = []
 nounlist = []
 verblist = []
 sublist = []
 alphabet = []
-namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet']
+saylist = []
+namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']
 def add(word, lis, num):
   newlis = lis
   newlis.append(word)
@@ -22,10 +23,10 @@ def clearAll():
   with open(sys.argv[0], 'r') as file:
     # read a list of lines into data
     data = file.readlines()
-  for i in range(open(sys.argv[0], 'r').readlines().index("import sys\n") + 1, open(sys.argv[0], 'r').readlines().index("namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet']\n")):
+  for i in range(open(sys.argv[0], 'r').readlines().index("import sys\n") + 1, open(sys.argv[0], 'r').readlines().index("namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']\n")):
     data[i] = namelis[i - 1] + " = []\n"
   for i in range(1, len(data)):
-    if(data[i] == "letCreator()\n"):
+    if(data[i] == "clearAll()\n"):
       for num in range(i, len(data)):
         data[num] == ""
   open(sys.argv[0], 'w').writelines(data)
@@ -37,13 +38,15 @@ def letCreator():
  typevar.lower()
  if(typevar.find("t") == 0):
    add(newWord, timelist, 2)
+ elif(typevar.find("sa") == 0):
+   add(newWord, saylist, 7)
  elif(typevar.find("n") == 0):
     add(newWord, nounlist, 3)
  elif(typevar.find("ad") == 0):
    add(newWord, adjlist, 1)
  elif(typevar.find("v") == 0):
    add(newWord, verblist, 4)
- elif(typevar.find("s") == 0):
+ elif(typevar.find("su") == 0):
    add(newWord, sublist, 5)
  elif(typevar.find("al") == 0):
    add(newWord, alphabet,6)
@@ -53,7 +56,7 @@ def letCreator():
  if(isWord == True):
    button = input("WHich buttons are used?")
    handSpec = False
-   if(button.find("L") != -1):
+   if(button.find("L") == 0 or button.find("R") == 0):
      handSpec = True
    button.lower()
    if(button.find("index") >= 0):
@@ -66,29 +69,26 @@ def letCreator():
          f.write("\nif((BI.Rindex or BI.Lindex)")
        else:
          raise Exception()
-     elif(button.find("lindex") == -1):
+     elif(button.find("lindex") != -1):
        f.write("\nif((BI.Lindex)")
      else:
        f.write("\nif((BI.Rindex)")
      didStart = True
-   if(button.find("middle") >= 0 and (button.find("side middle") == -1 or button.find("middle") < button.find("side middle"))):
+   if(button.find("middle") >= 0 and (button.find("side_middle") == -1 or button.find("middle") < button.find("side_middle"))):
      if(didStart):
        if(button.find("lmiddle") == -1 and button.find("rmiddle") == -1):
         if not(handSpec):
           f.write("and (BI.Rmiddle or BI.Lmiddle)")
         else:
           raise Exception()
-       elif(button.find("lmiddle") == -1):
+       elif(button.find("lmiddle") != -1):
          f.write("and (BI.Lmiddle)")
        else:
          f.write("and (BI.Rmiddle)")
      else:
        f = open(sys.argv[0], 'a')
        if(button.find("lmiddle") == -1 and button.find("rmiddle") == -1):
-        if not(handSpec):
-          f.write("\nif((BI.Rmiddle or BI.Lmiddle)")
-        else:
-          raise Exception()
+         f.write("\nif((BI.Rmiddle or BI.Lmiddle)")
        elif(button.find("lmiddle") != -1):
          f.write("\nif((BI.Lmiddle)")
        else:
@@ -97,44 +97,32 @@ def letCreator():
    if(button.find("side middle") >= 0 or button.find("side_middle") >= 0):    
      if(didStart):
       if(button.find("lside_middle") == -1 and button.find("rside_middle") == -1):
-       if not(handSpec):
-         f.write("and (BI.Rside_middle or BI.Lside_middle)")
-       else:
-         raise Exception()
-      elif(button.find("lside_middle") == -1):
+       f.write("and (BI.Rside_middle or BI.Lside_middle)")
+      elif(button.find("lside_middle") != -1):
         f.write("and (BI.Lside_middle)")
       else:
         f.write("and (BI.Rside_middle)")
      else:
       f = open(sys.argv[0], 'a')
       if(button.find("lside_middle") == -1 and button.find("rside_middle") == -1):
-       if not(handSpec):
-         f.write("\nif((BI.Rside_middle or BI.Lside_middle)")
-       else:
-         raise Exception()
+       f.write("\nif((BI.Rside_middle or BI.Lside_middle)")
       elif(button.find("lside_middle") != -1):
         f.write("\nif((BI.Lside_middle)")
       else:
         f.write("\nif((BI.Rside_middle)")
      didStart = True
-   if(button.find("ring") >= 0 and (button.find("side ring") == -1 or button.find("ring") < button.find("side ring"))):
+   if(button.find("ring") >= 0 and (button.find("side_ring") == -1 or button.find("ring") < button.find("side_ring"))):
      if(didStart):
       if(button.find("lring") == -1 and button.find("rring") == -1):
-       if not(handSpec):
-         f.write("and (BI.Rring or BI.Lring)")
-       else:
-         raise Exception()
-      elif(button.find("lring") == -1):
+       f.write("and (BI.Rring or BI.Lring)")
+      elif(button.find("lring") != -1):
         f.write("and (BI.Lring)")
       else:
         f.write("and (BI.Rring)")
      else:
       f = open(sys.argv[0], 'a')
       if(button.find("lring") == -1 and button.find("rring") == -1):
-       if not(handSpec):
-         f.write("\nif((BI.Rring or BI.Lring)")
-       else:
-         raise Exception()
+       f.write("\nif((BI.Rring or BI.Lring)")
       elif(button.find("lring") != -1):
         f.write("\nif((BI.Lring)")
       else:
@@ -142,28 +130,73 @@ def letCreator():
      didStart = True
    if(button.find("side ring") >= 0 or button.find("side_ring") >= 0):
      if(didStart):
-       f.write(" and (BI.Rside_ring or BI.Lside_ring)")
+      if(button.find("lside_ring") == -1 and button.find("rside_ring") == -1):
+       if not(handSpec):
+         f.write("and (BI.Rside_ring or BI.Lside_ring)")
+       else:
+         raise Exception()
+      elif(button.find("lside_ring") != -1):
+        f.write("and (BI.Lside_ring)")
+      else:
+        f.write("and (BI.Rside_ring)")
      else:
-       didStart = True
-       f = open(sys.argv[0], "a")    
-       f.write("if((BI.Rside_ring or BI.Lside_ring)")
-       isButton = True
-   if(button.find("pinky") >= 0 and (button.find("side pinky") == -1 or button.find("pinky") < button.find("side pinky"))):
+      f = open(sys.argv[0], 'a')
+      if(button.find("lside_ring") == -1 and button.find("rside_ring") == -1):
+       if not(handSpec):
+         f.write("\nif((BI.Rside_ring or BI.Lside_ring)")
+       else:
+         raise Exception()
+      elif(button.find("lside_ring") != -1):
+        f.write("\nif((BI.Lside_ring)")
+      else:
+        f.write("\nif((BI.Rside_ring)")
+     didStart = True
+   if(button.find("pinky") >= 0 and (button.find("side_pinky") == -1 or button.find("pinky") < button.find("side_pinky"))):
      if(didStart):
-       f.write(" and (BI.Rpinky or BI.Lpinky)")
+      if(button.find("lpinky") == -1 and button.find("rpinky") == -1):
+       if not(handSpec):
+         f.write("and (BI.Rpinky or BI.Lpinky)")
+       else:
+         raise Exception()
+      elif(button.find("lpinky") != -1):
+        f.write("and (BI.Lpinky)")
+      else:
+        f.write("and (BI.Rpinky)")
      else:
-       didStart = True
-       f = open(sys.argv[0], "a")    
-       f.write("if((BI.Rpinky or BI.Lpinky)")
-       isButton = True
+      f = open(sys.argv[0], 'a')
+      if(button.find("lpinky") == -1 and button.find("rpinky") == -1):
+       if not(handSpec):
+         f.write("\nif((BI.Rpinky or BI.Lpinky)")
+       else:
+         raise Exception()
+      elif(button.find("lpinky") != -1):
+        f.write("\nif((BI.Lpinky)")
+      else:
+        f.write("\nif((BI.Rpinky)")
+     didStart = True
    if(button.find("side pinky") >= 0 or button.find("side_pinky") >= 0):
      if(didStart):
-       f.write(" and (BI.Rside_pinky or BI.Lside_pinky)")
+      if(button.find("lside_pinky") == -1 and button.find("rside_pinky") == -1):
+       if not(handSpec):
+         f.write("and (BI.Rside_pinky or BI.Lside_pinky)")
+       else:
+         raise Exception()
+      elif(button.find("lside_pinky") != -1):
+        f.write("and (BI.Lside_pinky)")
+      else:
+        f.write("and (BI.Rside_pinky)")
      else:
-       didStart = True
-       f = open(sys.argv[0], "a")    
-       f.write("if((BI.Rside_pinky or BI.Lside_pinky)")
-       isButton = True
+      f = open(sys.argv[0], 'a')
+      if(button.find("lside_pinky") == -1 and button.find("rside_pinky") == -1):
+       if not(handSpec):
+         f.write("\nif((BI.Rside_pinky or BI.Lside_pinky)")
+       else:
+         raise Exception()
+      elif(button.find("lside_pinky") != -1):
+        f.write("\nif((BI.Lside_pinky)")
+      else:
+        f.write("\nif((BI.Rside_pinky)")
+     didStart = True
    new = str(input("Motion?"))
    if(new.lower().find('y') > -1):
      if(didStart):
@@ -187,6 +220,3 @@ def letCreator():
      f.close()
    else:
      print("You didn't input any buttons.")
-
-
-
