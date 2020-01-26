@@ -229,4 +229,3 @@ def buttonDeterminer():
   if(BI.pir.motion_detected):
     word += "Hello"
     rtword(word)
-	
