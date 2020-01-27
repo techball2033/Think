@@ -1,12 +1,12 @@
 import sys
 adjlist = []
-timelist = []
+advlist = []
 nounlist = []
 verblist = []
 sublist = []
 alphabet = []
 saylist = []
-namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']
+namelis = ['adjlist', 'advlist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']
 def rtword(word):
   print(word)
 def add(word, lis, num):
