@@ -227,5 +227,5 @@ def letCreator():
 letCreator()
 def buttonDeterminer():
   if(BI.pir.motion_detected):
-    word += "Hello"
-    rtword(word)
+    word = "Hello"
+    return word
