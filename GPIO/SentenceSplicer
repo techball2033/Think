@@ -1,3 +1,16 @@
+
+import timeit
+def wordSplicer():
+    String newWord = ""
+    String otherWord = ""
+    while true:
+        code_to_test = """
+    word = Interpreter.getLetter()
+    """
+        elapsed_time = timeit.timeit(code_to_test, number = 1)
+        if(elapsed_time > 2):
+            word += " "
+        print(word)
 def subString(Str): 
     lis = []
     num = len(Str)
