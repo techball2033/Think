@@ -5,19 +5,24 @@ import RPi.GPIO as GPIO
 letter = ""
 isButton = False
 didStart = False
-wordlis = [WB.advlist, WB.nounlist, WB.adjlist, WB.sublist, WB.verblist, WB.alphabet, WB.saylist]
-def getSentence(str sent):        //
+wordlis = [sublist, verblist, adjlist, nounlist, advlist, saylist, alphabet]
+def getSentence(sent):        
   sentence = []
-  for i in range(len(wordlis)):
+  sent.lower()
+  print(len(wordlis))
+  for i in range(len(wordlis) - 1):
+    print(i)
     for word in wordlis[i]:
       if(sent.find(word) != -1):
         if(i == len(wordlis) - 2):
           return [word]
-        elif(i == len(wordlis) - 1):
-          
-        else:
+        elif(i < len(wordlis) - 2):
           sentence.append(word + " ")
-          
+        break;
+  sen = ""
+  for word in sentence:
+    sen += word
+  return sen
   
 
     
