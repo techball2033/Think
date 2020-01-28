@@ -7,12 +7,9 @@ wordlis = [saylist, sublist, verblist, adjlist, nounlist, advlist, alphabet]
 def getSentence(sent):        
   sentence = []
   sent.lower()
-  print(len(wordlis))
   for i in range(len(wordlis) - 1):
-    print(i)
     for word in wordlis[i]:
       if(sent.find(word.lower()) != -1):
-        print(i)
         if(i == 0):
           return word
         elif(i > 0):
