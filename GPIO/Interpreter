@@ -3,7 +3,7 @@ import WordBank as WB
 from sys import argv
 import RPi.GPIO as GPIO
 letter = ""
-wordlis = [saylist, sublist, verblist, adjlist, nounlist, advlist, alphabet]
+wordlis = [WB.saylist, WB.sublist, WB.verblist, WB.adjlist, WB.nounlist, WB.advlist, WB.alphabet]
 def getSentence(sent):        
   sentence = []
   sent.lower()
