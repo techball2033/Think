@@ -1,5 +1,4 @@
-import sys
-adjlist = []
+advlist = ['cool' ,]
 advlist = []
 nounlist = []
 verblist = []
@@ -12,17 +11,17 @@ def rtword(word):
 def add(word, lis, num):
   newlis = lis
   newlis.append(word)
-  with open(sys.argv[0], 'r') as file:
+  with open('WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
-  data[num] = namelis[num - 1] + " = [" 
+  data[num - 1] = namelis[num - 1] + " = [" 
   for i in range(len(newlis)):
-    data[num] += "'" + newlis[i] + "' ,"
-  data[num] += "]\n"
-  with open(sys.argv[0], 'w') as file:
+    data[num - 1] += "'" + newlis[i] + "' ,"
+  data[num - 1] += "]\n"
+  with open('WordBank.py', 'w') as file:
     file.writelines( data )
 def clearAll():
-  with open(sys.argv[0], 'r') as file:
+  with open('WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
   for i in range(data.index("import sys\n") + 1, data.index("namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']\n")):
@@ -32,7 +31,7 @@ def clearAll():
       for num in range(i, len(data)):
         data[num] == ""
       break
-  f = open(sys.argv[0], 'w')
+  f = open('WordBank.py', 'w')
   f.writelines(data)
   f.close()
   
@@ -42,13 +41,13 @@ def letCreator():
  newWord = str(input("Type the new word: "))
  typevar = input("What type is it? ")
  typevar.lower()
- if(typevar.find("t") == 0):
-   add(newWord, timelist, 2)
+ if(typevar.find("adv") == 0):
+   add(newWord, advlist, 2)
  elif(typevar.find("sa") == 0):
    add(newWord, saylist, 7)
  elif(typevar.find("n") == 0):
     add(newWord, nounlist, 3)
- elif(typevar.find("ad") == 0):
+ elif(typevar.find("adj") == 0):
    add(newWord, adjlist, 1)
  elif(typevar.find("v") == 0):
    add(newWord, verblist, 4)
@@ -67,7 +66,7 @@ def letCreator():
    button.lower()
    if(button.find("index") >= 0):
      didStart = True
-     f = open(sys.argv[0], 'a')
+     f = open('WordBank.py', 'a')
      if(button.find("lindex") == -1 and button.find("rindex") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rindex or BI.Lindex)")
@@ -90,7 +89,7 @@ def letCreator():
        else:
          f.write("and (BI.Rmiddle)")
      else:
-       f = open(sys.argv[0], 'a')
+       f = open('WordBank.py', 'a')
        if(button.find("lmiddle") == -1 and button.find("rmiddle") == -1):
          f.write("\n\tif((BI.Rmiddle or BI.Lmiddle)")
        elif(button.find("lmiddle") != -1):
@@ -107,7 +106,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_middle)")
      else:
-      f = open(sys.argv[0], 'a')
+      f = open('WordBank.py', 'a')
       if(button.find("lside_middle") == -1 and button.find("rside_middle") == -1):
        f.write("\n\tif((BI.Rside_middle or BI.Lside_middle)")
       elif(button.find("lside_middle") != -1):
@@ -124,7 +123,7 @@ def letCreator():
       else:
         f.write("and (BI.Rring)")
      else:
-      f = open(sys.argv[0], 'a')
+      f = open('WordBank.py', 'a')
       if(button.find("lring") == -1 and button.find("rring") == -1):
        f.write("\n\tif((BI.Rring or BI.Lring)")
       elif(button.find("lring") != -1):
@@ -144,7 +143,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_ring)")
      else:
-      f = open(sys.argv[0], 'a')
+      f = open('WordBank.py', 'a')
       if(button.find("lside_ring") == -1 and button.find("rside_ring") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rside_ring or BI.Lside_ring)")
@@ -167,7 +166,7 @@ def letCreator():
       else:
         f.write("and (BI.Rpinky)")
      else:
-      f = open(sys.argv[0], 'a')
+      f = open('WordBank.py', 'a')
       if(button.find("lpinky") == -1 and button.find("rpinky") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rpinky or BI.Lpinky)")
@@ -190,7 +189,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_pinky)")
      else:
-      f = open(sys.argv[0], 'a')
+      f = open('WordBank.py', 'a')
       if(button.find("lside_pinky") == -1 and button.find("rside_pinky") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rside_pinky or BI.Lside_pinky)")
@@ -207,7 +206,7 @@ def letCreator():
        f.write("and BI.pir.motion_detected")
      else:
        didStart = True
-       f = open(sys.argv[0], "a")
+       f = open('WordBank.py', "a")
        f.write('\tif(BI.pir.motion_detected')
        isButton = True
    else:
@@ -216,7 +215,7 @@ def letCreator():
          f.write("and (BI.pir.motion_detected == False)")
        else:
          didStart = True
-         f = open(sys.argv[0], "a")
+         f = open('WordBank.py', "a")
          f.write('if not(BI.pir.motion_detected')
        isButton = True
    if(didStart):
