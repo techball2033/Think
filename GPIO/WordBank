@@ -1,11 +1,32 @@
-advlist = ['cool' ,]
-advlist = []
-nounlist = []
-verblist = []
-sublist = []
-alphabet = []
-saylist = []
+adjlist =[ 'adjlist', ]
+advlist = ['advlist' ,]
+nounlist = ["nounlist" ,]
+verblist =[ 'verblist', ]
+sublist =[ 'sublist',]
+alphabet = ['alphabet']
+saylist =[ 'saylist',]
 namelis = ['adjlist', 'advlist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']
+def toString(lis, num = 1):
+  if(num == 1):
+    newlis = "["
+    for word in lis:
+      newlis += " '" + word + "',"
+    newlis += "]"
+    return newlis
+  else:
+    newlis = "["
+    for lis2 in lis:
+      newlis += " '" + lis2[0] + "',"
+    newlis += "]"
+    return newlis
+def rtword(word):
+  print(word)
+  with open('WordBank.py', 'r') as file:
+    # read a list of lines into data
+    data = file.readlines()
+  data[num - 1] += "]\n"
+  with open('WordBank.py', 'w') as file:
+    file.writelines( data )
 def add(word, lis, num):
   newlis = lis
   newlis.append(word)
@@ -216,23 +237,48 @@ def letCreator():
          f.write('if not(BI.pir.motion_detected')
        isButton = True
    if(didStart):
-     f.write("):\n\t\tword += " + "'" + newWord + " '" + "\n\t\trtword(word)")
+     f.write("):\n\t\tword += " + "'" + newWord + " '" + "\n\t\treturn (word)")
      f.close()
    else:
      print("You didn't input any buttons.")
 def remove(sign):
+  import Interpreter as IN
+  doesExist = False
   with open('WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
-  for i in range(len(data)):
-    if(data.index[i].find(sign)):
-      for num in range(i - 1, i+1):
+  i = -1
+  for lis in IN.wordlis:
+    i += 1
+    for word in lis:
+      if(word.find(sign) != -1):
+        lis.pop(lis.index(word))
+        #newlis = list
+        #newlis.pop(list.index(sign))
+        print(lis)
+        numlis = [7, 5, 4, 1, 3, 2, 6]
+        a = numlis[i]
+        a -= 1
+        num = data.index("namelis = ['adjlist', 'advlist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']\n")
+        print(num)
+        word = data[a]
+        orig = data[a][: data[a].find("=") + 1]
+        data[a] = orig
+        data[a] += toString(lis)
+        data[a] += "\n"
+  for i in range(data.index("def buttonDeterminer():\n"), len(data)):
+    if(data[i].find(sign) > 0):
+      for num in range(i - 1, i+2):
         data[num] = ""
-  f = open('WordBank.py', 'w')
-  f.writelines(data)
-  f.close()
-letCreator()
+      doesExist = True
+  if not(doesExist):
+    print("This word does not exist")
+  else:
+    f = open('WordBank.py', 'w')
+    f.writelines(data)
+    f.close()
 def buttonDeterminer():
-  if(BI.pir.motion_detected):
-    word = "Hello"
-    return word
+	if not(True):
+    word += ""
+    return (word)
+  
