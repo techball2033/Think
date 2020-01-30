@@ -1,9 +1,9 @@
 import turtle
-import WordBank as WB
-mypen = turtle.Pen()
+from GPIO import WordBank as WB
+#mypen = turtle.Pen()
 word = ""
-while(True):
-    word += WB.buttonDeterminer()     #str(input("Letter: "))
+def run():
+    word += WB.buttonDeterminer()     
     mypen.clear()
     mypen.color("blue")
     mypen.write(word, move=False, align="right", font=("Arial", 14, "normal"))
