@@ -1,4 +1,5 @@
-adjlist =[ 'adjlist', ]
+#from GPIO import ButtonsInitializer as BI
+adjlist =[ 'adjlist', '',]
 advlist = ['advlist' ,]
 nounlist = ["nounlist" ,]
 verblist =[ 'verblist', ]
@@ -19,28 +20,20 @@ def toString(lis, num = 1):
       newlis += " '" + lis2[0] + "',"
     newlis += "]"
     return newlis
-def rtword(word):
-  print(word)
-  with open('WordBank.py', 'r') as file:
-    # read a list of lines into data
-    data = file.readlines()
-  data[num - 1] += "]\n"
-  with open('WordBank.py', 'w') as file:
-    file.writelines( data )
 def add(word, lis, num):
   newlis = lis
   newlis.append(word)
-  with open('WordBank.py', 'r') as file:
+  with open('GPIO/WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
-  data[num - 1] = namelis[num - 1] + " = [" 
+  data[num] = namelis[num - 1] + " = [" 
   for i in range(len(newlis)):
-    data[num - 1] += "'" + newlis[i] + "' ,"
-  data[num - 1] += "]\n"
-  with open('WordBank.py', 'w') as file:
+    data[num] += "'" + newlis[i] + "' ,"
+  data[num] += "]\n"
+  with open('GPIO/WordBank.py', 'w') as file:
     file.writelines( data )
 def clearAll():
-  with open('WordBank.py', 'r') as file:
+  with open('GPIO/WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
   for i in range(data.index("namelis = ['adjlist', 'timelist', 'nounlist', 'verblist', 'sublist', 'alphabet', 'saylist']\n")):
@@ -50,7 +43,7 @@ def clearAll():
       for num in range(i, len(data)):
         data[num] == ""
       break
-  f = open('WordBank.py', 'w')
+  f = open('GPIO/WordBank.py', 'w')
   f.writelines(data)
   f.close()
 def letCreator():
@@ -84,7 +77,7 @@ def letCreator():
    button.lower()
    if(button.find("index") >= 0):
      didStart = True
-     f = open('WordBank.py', 'a')
+     f = open('GPIO/WordBank.py', 'a')
      if(button.find("lindex") == -1 and button.find("rindex") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rindex or BI.Lindex)")
@@ -107,7 +100,7 @@ def letCreator():
        else:
          f.write("and (BI.Rmiddle)")
      else:
-       f = open('WordBank.py', 'a')
+       f = open('GPIO/WordBank.py', 'a')
        if(button.find("lmiddle") == -1 and button.find("rmiddle") == -1):
          f.write("\n\tif((BI.Rmiddle or BI.Lmiddle)")
        elif(button.find("lmiddle") != -1):
@@ -124,7 +117,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_middle)")
      else:
-      f = open('WordBank.py', 'a')
+      f = open('GPIO/WordBank.py', 'a')
       if(button.find("lside_middle") == -1 and button.find("rside_middle") == -1):
        f.write("\n\tif((BI.Rside_middle or BI.Lside_middle)")
       elif(button.find("lside_middle") != -1):
@@ -141,7 +134,7 @@ def letCreator():
       else:
         f.write("and (BI.Rring)")
      else:
-      f = open('WordBank.py', 'a')
+      f = open('GPIO/WordBank.py', 'a')
       if(button.find("lring") == -1 and button.find("rring") == -1):
        f.write("\n\tif((BI.Rring or BI.Lring)")
       elif(button.find("lring") != -1):
@@ -161,7 +154,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_ring)")
      else:
-      f = open('WordBank.py', 'a')
+      f = open('GPIO/WordBank.py', 'a')
       if(button.find("lside_ring") == -1 and button.find("rside_ring") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rside_ring or BI.Lside_ring)")
@@ -184,7 +177,7 @@ def letCreator():
       else:
         f.write("and (BI.Rpinky)")
      else:
-      f = open('WordBank.py', 'a')
+      f = open('GPIO/WordBank.py', 'a')
       if(button.find("lpinky") == -1 and button.find("rpinky") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rpinky or BI.Lpinky)")
@@ -207,7 +200,7 @@ def letCreator():
       else:
         f.write("and (BI.Rside_pinky)")
      else:
-      f = open('WordBank.py', 'a')
+      f = open('GPIO/WordBank.py', 'a')
       if(button.find("lside_pinky") == -1 and button.find("rside_pinky") == -1):
        if not(handSpec):
          f.write("\n\tif((BI.Rside_pinky or BI.Lside_pinky)")
@@ -224,7 +217,7 @@ def letCreator():
        f.write("and BI.pir.motion_detected")
      else:
        didStart = True
-       f = open('WordBank.py', "a")
+       f = open('GPIO/WordBank.py', "a")
        f.write('\tif(BI.pir.motion_detected')
        isButton = True
    else:
@@ -233,7 +226,7 @@ def letCreator():
          f.write("and (BI.pir.motion_detected == False)")
        else:
          didStart = True
-         f = open('WordBank.py', "a")
+         f = open('GPIO/WordBank.py', "a")
          f.write('if not(BI.pir.motion_detected')
        isButton = True
    if(didStart):
@@ -244,7 +237,7 @@ def letCreator():
 def remove(sign):
   import Interpreter as IN
   doesExist = False
-  with open('WordBank.py', 'r') as file:
+  with open('GPIO/WordBank.py', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
   i = -1
@@ -274,11 +267,10 @@ def remove(sign):
   if not(doesExist):
     print("This word does not exist")
   else:
-    f = open('WordBank.py', 'w')
+    f = open('GPIO/WordBank.py', 'w')
     f.writelines(data)
     f.close()
 def buttonDeterminer():
-	if not(True):
+  if not(True):
     word += ""
     return (word)
-  
