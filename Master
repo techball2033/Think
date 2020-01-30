@@ -1,0 +1,10 @@
+import WordBank as WB
+import Interpreter as IN
+import Display as DI
+command = str(input("WHat do you want to do? "))
+if(command.find('re') == 0):
+  WB.remove()
+elif(command.find('a') == 0):
+  WB.letCreator()
+elif(command.find('ru') == 0):
+  DI.run()
