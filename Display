@@ -3,7 +3,7 @@ import WordBank as WB
 mypen = turtle.Pen()
 word = ""
 while(True):
-    word += WB.rtword()     #str(input("Letter: "))
+    word += WB.buttonDeterminer()     #str(input("Letter: "))
     mypen.clear()
     mypen.color("blue")
     mypen.write(word, move=False, align="right", font=("Arial", 14, "normal"))
